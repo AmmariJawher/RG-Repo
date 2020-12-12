@@ -3,17 +3,21 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const ticketSchema = new Schema({
-    fakeId: {type: Number, required: true},
-    eventNum: {type : Number, required: true},
     date: { type: Date, default: Date.now },
-    maxGain : {type : Number  , required: true },
-    minGain : {type : Number  , required: true },
-    Gr : { type: Number, required : true},
-    combo : {type : Number, required : true},
-    choices: {type: Array, required: true},
-    selectionCount : {type :Number , required : true},
-    miseTotal : {type:Number,required: true},
-    status : {type : Boolean}
+    fakeId: {type: Number, required: true},
+    eventResult: {type: Number, required: false},
+    eventNum: {type : Number, required: true},
+    eventTime: {type: Date, required: false},
+    minGain : {type : Number  , required: true }, //cool
+    maxGain : {type : Number  , required: true }, //cool
+    cotesMin: {type : Number  , required: true }, //cool
+    cotesMax: {type : Number  , required: true }, //cool
+    status : {type : Boolean},
+    gr : {type:Number,required: true}, //cool
+    mise : {type:Number,required: true}, //test
+    ticketWinSum: {type:Number,required: true}, //cool
+    combi : {type : Number, required : true}, //cool
+    choiceList: {type: Array, required: true}, //cool
 });
 
 module.exports = mongoose.model("ticket", ticketSchema);

@@ -4,26 +4,30 @@ const Ticket = require('../models/ticketModel');
 
 module.exports = {
     async createTicket (req, res) {
-        const {date,maxGain,minGain,Gr,combo,choices,selectionCount,miseTotal,status} = req.body;
+        const {fakeId,eventResult,eventNum,eventTime,minGain,maxGain,cotesMin,cotesMax,status,gr,mise,ticketWinSum,combi,choiceList} = req.body;
         const createTicket = new Ticket({
+            fakeId,
+            eventResult,
             eventNum,
-            date,
-            maxGain,
+            eventTime,
             minGain,
-            Gr,
-            combo,
-            choices,
-            selectionCount,
-            miseTotal,
-            status
+            maxGain,
+            cotesMin,
+            cotesMax,
+            status,
+            gr,
+            mise,
+            ticketWinSum,
+            combi,
+            choiceList
         })
 
         const ticket = await createTicket.save();
         res.status(200).send(ticket.toJSON());
     },
     async getAllTickets (req, res) {
-        const { limitNum } = req.body;
-        const tickets = await Ticket.find().sort({date: 'desc'}).limit(limitNum);
+        //const { limitNum } = req.body;
+        const tickets = await Ticket.find().sort({date: 'desc'}).limit(10);
         res.status(200).send(tickets);
     },
     async getTicket (req, res) {
